@@ -5,8 +5,12 @@
     <title>ADD STUDENTS</title>
   </head>
   <body>
-    <h1>Edit New Student</h1>
-          <form class="form" action="/students/editStudent/" method="post">
+
+    <h1>Add New Student</h1>
+    <%if(error){%>
+    <h4 style="color: red"><%=error.message%></h4>
+    <%}%>
+          <form class="form" action="/students/addStudent/" method="post">
             <div class="col-xs-8 col-md-10">
               <br> First Name:<br>
                 <input type="text" name="first_name" value="" placeholder="first name">
