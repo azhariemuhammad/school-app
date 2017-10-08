@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teacher</title>
+  </head>
+  <body>
+    <h1>Edit Teacher</h1>
+    <%if(error){%>
+    <h4 style="color: red"><%=error.message%></h4>
+    <%}%>
+
+          <form class="form" action="/teachers/editTeacher/<%=dataTeachers.id%>" method="post">
+
+              <br> First Name:<br>
+                <input type="text" name="first_name" value="<%=dataTeachers.first_name%>" placeholder="first name">
+                <br> Last Name:<br>
+                <input type="text" name="last_name" value="<%=dataTeachers.last_name%>" placeholder="last name">
+                <br> email:<br>
+                <input type="text" name="email" value="<%=dataTeachers.email%>" placeholder="email">
+                <br>
+
+                <select class="box" name="subject_name">
+
+                <% for(let i = 0; i < dataSubjects.length; i++) {%>
+                <option value="<%=dataSubjects[i].id%>"><%=dataSubjects[i].subject_name%></option>
+                <%}%>
+                </select>
+                <input type="submit" class="btn" value="submit">
+                <br>
+                <br<
+              </form>
+  </body>
+</html>

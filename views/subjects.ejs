@@ -5,18 +5,23 @@
     <title>Subject</title>
   </head>
   <body>
-    <table>
 
+    <table>
+    <h1>Subjects</h1>
 
     <tr>
       <th>ID</th>
       <th>Subject Name</th>
+      <th>Teachers Name</th>
     </tr>
     <%dataSubjects.forEach (row=> {%>
     <tr>
       <td><%= row.id%></td>
       <td><%=row.subject_name%></td>
+      <%row.teachers.forEach(rowTeachers=>{%>
+        <td><%=rowTeachers.first_name%></td
       </tr>
+      <%})%>
       <%})%>
     </table>
   </body>

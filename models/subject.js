@@ -9,5 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+  subject.associate = models =>{
+    subject.hasMany (models.teacher, {foreignKey: 'SubjectId'})
+
+  }
   return subject;
 };
