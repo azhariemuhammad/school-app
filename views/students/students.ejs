@@ -24,11 +24,11 @@
       <td><%=row.last_name%></td>
       <td><%=row.getFullName()%></td>
       <td><%=row.email%></td>
-
+      <td><a href="/students/addSubject/<%=row.id%>">Add Subject</a></td>
       <td>
 
-        <a href="students/edit/<%=row.id%>">EDIT</a>
-        <a href="students/delete/<%=row.id%>">DELETE</a>
+        <a href="/students/edit/<%=row.id%>">EDIT</a>
+        <a href="/students/delete/<%=row.id%>">DELETE</a>
       </td>
       </tr>
       <%})%>

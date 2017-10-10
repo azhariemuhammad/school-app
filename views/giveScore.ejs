@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Give Score</title>
+  </head>
+  <body>
+    <form action=""></form>
+    <table>
+      <tr>
+      <th>ID</th>
+      <th>Name</th>
+
+    </tr>
+
+  <%dataStudentSubjects.forEach (row=> {%>
+  <tr>
+    <td><%= row.StudentId%></td>
+    <td><%=row.student.getFullName()%></td>
+    </table>
+
+    <%})%>
+
+
+
+  </body>
+</html>

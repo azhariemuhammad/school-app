@@ -7,9 +7,23 @@ li a:hover {background-color: #111;}th { padding-right: 30px;}
 </style>
 <nav>
   <ul>
-    <li><a href="/students">Students</a></li>
-    <li><a href="/teachers">Teachers</a></li>
-    <li><a href="/subjects">Subject</a></li>
-
+    <%if(session.hasOwnProperty('role')){
+      if(session.role==='teacher'){%>
+        <li><a href="/">Home</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <%} else if(session.role==='academic'){%>
+        <li><a href="/">Home</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/subjects">Subject</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <%} else if(session.role==='headmaster'){%>
+        <li><a href="/">Home</a></li>
+        <li><a href="/students">Students</a></li>
+        <li><a href="/teachers">Teachers</a></li>
+        <li><a href="/subjects">Subject</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <%}
+    }%>
   </ul>
 </nav>

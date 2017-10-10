@@ -2,9 +2,17 @@ const express = require('express')
 const router = express.Router()
 const model = require('../models')
 
+router.use(function(req, res, next){
+  if(req.session.hasOwnProperty('username')){
+    next()
+  }else{
+    res.render('login')
+  }
+})
+
 router.get('/', function(req,res){
   model.student.findAll().then(dataStudents=>{
-    res.render('students/students',{dataStudents:dataStudents})
+    res.render('students/students',{session:req.session,dataStudents:dataStudents})
   })
 })
 
@@ -43,15 +51,38 @@ router.get('/delete/:id', function(req, res){
   })
 })
 
+
+//GET /students/:id/addsubject (menampilkan data student dan pilihan subject)
+router.get('/addSubject/:id', function(req, res){
+  model.student.findById(req.params.id)
+   .then(dataStudents => {
+     model.subject.findAll()
+     .then(dataSubjects=>{
+      res.render('students/addSubject', {dataStudents:dataStudents, dataSubjects:dataSubjects})
+    })
+  })
+})
+
+router.post('/addSubject/:id', function(req, res){
+  // res.send('HAHAHHAA')
+  //model.StudentSubject.create(studentId:req.params.id, subjectId:req.body.subject.name})
+  model.studentSubject.create(req.body)
+   .then(() => {
+     //console.log(req.params.id);
+    res.redirect('/students')
+  })
+})
+
+
 module.exports = router
-// Player.find({where: {idFbUser: request.idFbUser}}).then((player) => {
-//             //create one more
-//             Player.create({idFbUser: "invalidInteger"}).then((player) => {
-//                    defer.resolve(false);
-//             }).catch((error) => {
-//                 defer.reject('catches only equals validator.');
-//             });
 //
-// }).catch((error) => {
-//      defer.reject('invalidInteger catch only here');
-// });
+//
+// model.studentSubject.create({
+//   SubjectId: req.body.SubjectId,
+//   StudentId: req.params.id
+// })
+//  .then(() => {
+//    console.log(req.params.id);
+//   res.redirect('/students')
+// })
+// })

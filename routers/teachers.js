@@ -3,6 +3,14 @@ const express = require('express')
 const router = express.Router()
 let model = require('../models')
 
+router.use(function(req, res, next){
+  if(req.session.hasOwnProperty('username')){
+    next()
+  }else{
+    res.render('login')
+  }
+})
+
 
 router.get('/', function(req,res){
   model.teacher.findAll({
@@ -10,7 +18,7 @@ router.get('/', function(req,res){
       {model: model.subject}
     ]})
    .then(dataTeachers => {
-    res.render('teachers/teachers', {dataTeachers:dataTeachers})
+    res.render('teachers/teachers', {dataTeachers:dataTeachers,session:req.session})
   })
 })
 

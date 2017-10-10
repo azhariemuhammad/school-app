@@ -19,7 +19,9 @@
       <td><%= row.id%></td>
       <td><%=row.subject_name%></td>
       <%row.teachers.forEach(rowTeachers=>{%>
-        <td><%=rowTeachers.first_name%></td
+        <td><%=rowTeachers.first_name%></td>
+          <td><a href="/subjects/enrolledStudent/<%=row.id%>">Endrolled Students</a></td>
+
       </tr>
       <%})%>
       <%})%>

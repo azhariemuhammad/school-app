@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ADD SUBJECT</title>
+  </head>
+  <body>
+
+
+    <h1>Add SUBJECT TO STUDENT</h1>
+    <table>
+      <tr>
+      <th>First Name</th>
+      <td><%=dataStudents.first_name%></td>
+     </tr>
+     <tr>
+      <th>Last Name</th>
+      <td><%=dataStudents.last_name%></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%=dataStudents.email%></td>
+    </tr>
+    </table>
+
+
+          <form class="form" action="/students/addSubject/<%=dataStudents.id%>" method="post">
+              <input type="hidden" name="StudentId" value="<%=dataStudents.id%>" >
+                <select class="box" name="SubjectId">
+
+                <% for(let i = 0; i < dataSubjects.length; i++) {%>
+                <option value="<%=dataSubjects[i].id%>"><%=dataSubjects[i].subject_name%></option>
+                <%}%>
+                </select>
+                <input type="submit" class="btn" value="submit">
+                <br>
+                <br<
+                <input type="submit" class="btn" value="submit">
+  </body>
+</html>
