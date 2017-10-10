@@ -4,13 +4,13 @@ const model = require('../models')
 const crypto = require('crypto');
 const randomString = require('../helper/randomString')
 
-router.use(function(req, res, next){
-  if(req.session.hasOwnProperty('username')){
-    res.render('index')
-  }else{
-    next()
-  }
-})
+// router.use(function(req, res, next){
+//   if(req.session.hasOwnProperty('username')){
+//     res.render('index')
+//   }else{
+//     next()
+//   }
+// })
 
 router.get('/', function(req, res){
   res.render('signup')
